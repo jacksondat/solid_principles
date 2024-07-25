@@ -12,16 +12,16 @@ public class RecomendadorTest {
 	public void test() {
 		Recomendador r = new Recomendador();
 		
-		List<Pelicula> recomenaciones = r.recomendaciones(BBDD.JUAN);
+		List<Pelicula> recomendaciones = r.getRecomendadas(BBDD.JUAN);
 		
-		Assert.assertFalse(recomenaciones.contains(BBDD.ET));
+		Assert.assertFalse(recomendaciones.contains(BBDD.ET));
 	}
 	
 	@Test 
 	public void test_formato() {
 		Recomendador r = new Recomendador();
 		
-		String csv = r.recomendacionesCSV(BBDD.JUAN);
+		String csv = new ExportadorCSV().exportar(r.getRecomendadas(BBDD.JUAN));
 		
 		String esperado = "Salvar al soldado Ryan,Spielberg,belico";
 		
